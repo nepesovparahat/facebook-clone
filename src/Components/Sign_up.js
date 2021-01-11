@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
-const Form = () =>{
+import {Link} from 'react-router-dom';
+const Sign_up = () =>{
     const [Formdata, setFormData] = useState({
         firstname: '',
         lastname: '',
         email: '',
         password: ''
+       
     });
 
     const updateFormdate = event => setFormData({
@@ -12,7 +14,7 @@ const Form = () =>{
         [event.target.name]: event.target.value
     });
 
-    const {firstname, lastname, email, password} = Formdata;
+    const { firstname,lastname, email, password} = Formdata;
 
     return (
         <form>
@@ -27,7 +29,7 @@ const Form = () =>{
             onChange = {e =>updateFormdate(e)}
             type="text"
             required
-            /> 
+            />
             <input 
             value = {email}
             onChange = {e =>updateFormdate(e)}
@@ -42,9 +44,10 @@ const Form = () =>{
             />
 
             <button type = "submit">Submit</button>
+            <Link to = "/Sign_in">Sign In</Link>
         </form>
         
     );
 };
 
-export default Form;
+export default Sign_up;
