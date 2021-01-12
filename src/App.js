@@ -22,18 +22,14 @@ function App() {
   return (
     <Router>
       <div className="body">
-        
-        <div className="sign">
         <Switch>
-          <Route exact path = '/'></Route>
+          <Route exact path = '/'><Sign_in/></Route>
           <Route path = '/Sign_in'>{(user.email != "") ? (
         <div className="welcome"><h2>Welcome, <span>{user.email}</span></h2>
         <button>Logout</button></div>) : (<Sign_in Login={Login} error={error} />)}</Route>
           <Route path = '/Sign_up'><Sign_up/></Route>
         </Switch> 
         </div>
-        
-      </div>
     </Router>
   );
 }
