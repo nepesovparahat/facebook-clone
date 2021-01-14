@@ -9,27 +9,32 @@ const Sign_in = ({ Login, error }) => {
 
     return (
         <div className="sign">
+            <div>Login to Facebook</div>
             <form onSubmit={submitHundler}>
                 <div className="container">
-                    <label><b>Email</b></label>
+                    <div className="input_flux">
                     <input
-                        type="email" onChange={e => setdetails({ ...details, email: e.target.value })} value={details.email}
+                       placeholder="Mobile number or email address" type="email" onChange={e => setdetails({ ...details, email: e.target.value })} value={details.email}
                         required
                     />
-                    <label><b>Password</b></label>
                     <input
-                        type="password" onChange={e => setdetails({ ...details, password: e.target.value })} value={details.password}
+                      placeholder="Password" type="password" onChange={e => setdetails({ ...details, password: e.target.value })} value={details.password}
                         required
                     />
-
-                    <button type="submit">Submit</button>
-                    <label>
-                        <input type="checkbox" name="remember" /> Remember me</label>
-                    <Link to="/Sign_up">Sign Up</Link>
+                    </div>
+                   <div>
+                       <div className="div_btn">
+                       <button className="btn" type="submit">Log In</button>
+                       </div>
+                   
+                    
+                   
+                   </div>
+                   <span className="psw"><a href="#">Forgot password ?</a></span>
+                   <hr className="line"></hr>
+                   <Link to="/Sign_up">Sign Up</Link>
                 </div>
-                <div className="container">
-                    <span className="psw"><a href="#">Forgot Password ?</a></span>
-                </div>
+                
             </form>
         </div>
     );
