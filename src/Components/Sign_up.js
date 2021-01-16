@@ -17,7 +17,8 @@ const Sign_up = () =>{
     const { firstname,lastname, email, password} = Formdata;
 
     return (
-        <form>
+        <div className="sign_up">
+            <form>
             <input 
             value = {firstname}
             onChange = {e =>updateFormdate(e)}
@@ -46,7 +47,7 @@ const Sign_up = () =>{
             <button type = "submit">Submit</button>
             <Link to = "/Sign_in">Sign In</Link>
         </form>
-        
+        </div>  
     );
 };
 

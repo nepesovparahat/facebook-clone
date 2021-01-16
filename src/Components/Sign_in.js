@@ -9,11 +9,11 @@ const Sign_in = ({ Login, error }) => {
 
     return (
         <div className="sign">
-            <div>Login to Facebook</div>
             <form onSubmit={submitHundler}>
                 <div className="container">
+                {(error!="") ? (<div className="error">{error}</div>):""}
                     <div className="input_flux">
-                    <input
+                    <input 
                        placeholder="Mobile number or email address" type="email" onChange={e => setdetails({ ...details, email: e.target.value })} value={details.email}
                         required
                     />
@@ -32,7 +32,7 @@ const Sign_in = ({ Login, error }) => {
                    </div>
                    <span className="psw"><a href="#">Forgot password ?</a></span>
                    <hr className="line"></hr>
-                   <Link to="/Sign_up">Sign Up</Link>
+                   <Link to="/Sign_up"><button className="sign_up_btn">Sign Up</button></Link>
                 </div>
                 
             </form>
