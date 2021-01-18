@@ -1,6 +1,4 @@
-
-
- .body{
+.body {
   background-color: #f0f2f5;
   min-height: 100vh;
   display: flex;
@@ -8,14 +6,14 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-
 }
 
-.error{
-color: red;
-font-size: 14px;
+.error {
+  color: red;
+  font-size: 14px;
 }
-.sign_up{
+
+.sign {
   align-items: center;
   background-color: #fff;
   border: none;
@@ -26,76 +24,117 @@ font-size: 14px;
   padding: 20px 0 28px;
   text-align: center;
   width: 396px;
-  height:450px;
-  color:black
-}
-.sign{
-  align-items: center;
-  background-color: #fff;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .1), 0 8px 15px rgba(0, 0, 0, .1);
-  box-sizing: border-box;
-  margin: 40px 0 0;
-  padding: 20px 0 28px;
-  text-align: center;
-  width: 396px;
-  height:398px;
-  color:black
+  height: 398px;
+  color: black
 }
 
-.btn{
+.btn {
   background-color: #1877f2;
-    border: none;
-    border-radius: 6px;
-    font-size: 20px;
-    line-height: 48px;
-    padding: 0 16px;
-    width: 364px;
-    color: #fff;
-    font-weight: bold;
-    font-style: inherit;
-    cursor: pointer;
-    display: inline-block;
-    text-decoration: none;
-    
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  line-height: 48px;
+  padding: 0 16px;
+  width: 364px;
+  color: #fff;
+  font-weight: bold;
+  font-style: inherit;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
 }
-.div_btn{
+
+.div_btn {
   text-align: center;
   padding: 6px 0;
-  
 }
 
-.btn:hover{
+.btn:hover {
   cursor: pointer;
+  background-color: #1a70e0;
 }
-.input_flux{
+
+.input_flux {
   display: inline-block;
-    font-size: 14px;
-    padding: 6px 0;
-    margin:auto;
-   border-radius: 6px;
-   
-
+  font-size: 14px;
+  padding: 6px 0;
+  margin: auto;
+  border-radius: 6px;
 }
 
-.line{
+.line {
   width: 330px;
 }
-.sign_up_btn:hover{
-  cursor: pointer;
-  background-color: #5ccf45;
+
+.psw {
+  font-size: 16px;
 }
-.sign_up_btn{
+
+.signIn {
+  font-size: 17px;
+  padding: 14px 16px;
+  width: 330px;
+  border-radius: 6px;
+  border: 1px solid rgb(194, 190, 190);
+  margin-top: 10px;
+  display: block;
+}
+
+.signIn:focus {
+  background-color: #fff;
+  font-size: 17px;
+  padding: 14px 16px;
+  border-color: rgb(42, 75, 219);
+  width: 330px;
+  outline: none;
+  display: block;
+}
+
+/*-----------Sign UP page css*-----------*/
+
+.sign_up {
+  display: block;
+  align-items: center;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .1), 0 8px 15px rgba(0, 0, 0, .1);
+  box-sizing: border-box;
+  margin: 40px 0 0;
+  padding: 20px 0 28px;
+  text-align: center;
+  width: 396px;
+  height: 450px;
+  color: black
+}
+
+.select_ {
+  width: 111.5px;
+  border-radius: 5px;
+  color: #1c1e21;
+  font-family: SFProText-Medium, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: normal;
+  height: 38px;
+  line-height: 22px;
+  background-position: right 6px center;
+  background-repeat: no-repeat;
+  background-size: 14px;
+  padding: 0 8px;
+  padding-right: 20px;
+  margin: 12px 5px;
+}
+
+.sign_up_btn, .register_, .logout {
   text-decoration-line: none;
-  background-color: #42b72a;
+  background-color: #5ccf45;
   box-sizing: content-box;
-  border:none;
-  color:#fff;
+  border: none;
+  color: #fff;
   -webkit-font-smoothing: antialiased;
   font-weight: bold;
   justify-content: center;
-  font-size:20px;
+  font-size: 20px;
   line-height: 48px;
   border-radius: 6px;
   margin-top: 20px;
@@ -106,40 +145,22 @@ font-size: 14px;
   vertical-align: middle;
 }
 
-.psw{
-  font-size: 16px;
-}
-input[type=email],[type=password],input{
- 
+.signUpInput {
   font-size: 17px;
-    padding: 14px 16px;
-    width: 330px;
-    border-radius: 6px;
-    border:1px solid rgb(194, 190, 190);
-    margin-top: 10px;
-  
- 
-      display: block;
+  padding: 10px 12px;
+  width: 330px;
+  border-radius: 5px;
+  border: 1px solid rgb(194, 190, 190);
+  margin-top: 10px;
 }
-input[type=email]:focus, input[type=password]:focus {
+.signUpInput:focus{
   background-color: #fff;
-  font-size: 17px;
-  padding:14px 16px;
-  border-color:rgb(42, 75, 219);
-    width: 330px;
-    outline: none;
+  border-color: rgb(42, 75, 219);
+  outline: none;
   
- 
-      display: block;
-/*       
-      border-radius: 4px;
-      box-sizing: border-box;
-      padding: 12px 20px;
-      color: gray;
-      font-family: inherit;
-      font-size: inherit;
-      font-weight: semibold;
-      line-height: inherit;
-      transition: 0.3s ease; */
 }
 
+.sign_up_btn:hover {
+  cursor: pointer;
+  background-color: #42b72a;
+}

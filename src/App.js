@@ -40,11 +40,11 @@ function App() {
       <div className="body">
         <Switch>
           <Route exact path = '/'>{(user.email != "") ? (
-        <div className="welcome"><h2>Welcome, <span>{user.email}</span></h2>
-        <button onClick={Logout}>Logout</button></div>) : (<Sign_in Login={Login} error={error} />)}</Route>
+        <div className="welcome"><h2>Welcome, <span>Parahat</span></h2>
+        <button onClick={Logout}  className="logout">Logout</button></div>) : (<Sign_in Login={Login} error={error} />)}</Route>
           <Route path = '/Sign_in'>{(user.email != "") ? (
-        <div className="welcome"><h2>Welcome, <span>{user.email}</span></h2>
-        <button onClick={Logout}>Logout</button></div>) : (<Sign_in Login={Login} error={error} />)}</Route>
+        <div className="welcome"><h2>Welcome, <span>Parahat</span></h2>
+        <button onClick={Logout} className="logout">Logout</button></div>) : (<Sign_in Login={Login} error={error} />)}</Route>
           <Route path = '/Sign_up'><Sign_up/></Route>
         </Switch> 
         </div>

@@ -13,11 +13,11 @@ const Sign_in = ({ Login, error }) => {
                 <div className="container">
                 {(error!="") ? (<div className="error">{error}</div>):""}
                     <div className="input_flux">
-                    <input 
+                    <input className="signIn"
                        placeholder="Mobile number or email address" type="email" onChange={e => setdetails({ ...details, email: e.target.value })} value={details.email}
                         required
                     />
-                    <input
+                    <input className="signIn"
                       placeholder="Password" type="password" onChange={e => setdetails({ ...details, password: e.target.value })} value={details.password}
                         required
                     />
