@@ -8,28 +8,28 @@ const Sign_up = () => {
         
     }
 
-   
-
-
     return (
         <div className="sign_up">
             <form onSubmit={submitChange}>
                 <input className="signUpInput"
-              
                     type="text"
+                    placeholder="Your name"
                     required
                    
                 />
                 <input className="signUpInput"
                     type="text"
+                    placeholder="Your surname"
                     required
                 />
                 <input className="signUpInput"
                     type="email"
+                    placeholder="Mobile number or e-mail"
                     required
                 />
                 <input className="signUpInput"
                     type="password"
+                    placeholder="New password"
                     required
                 />
                 <span className="select_span">
@@ -39,11 +39,9 @@ const Sign_up = () => {
 
                 </span><br />
 
-                <button className="register_" type="submit">Register</button>
-                <Link to="/Sign_in">Sign In</Link>
+                <button className="register_" type="submit">Register</button><br/>
             </form>
         </div>
     );
 };
-
 export default Sign_up;
