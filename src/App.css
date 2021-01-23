@@ -3,7 +3,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
@@ -42,7 +42,9 @@
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
+  border:none
 }
+
 
 .div_btn {
   text-align: center;
@@ -92,7 +94,7 @@
 
 /*-----------Sign UP page css*-----------*/
 
-.sign_up_nav{
+.sign_up_nav {
   margin-top: 100px;
 }
 
@@ -104,12 +106,13 @@
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .1), 0 8px 15px rgba(0, 0, 0, .1);
   box-sizing: border-box;
-  margin:0;
+  margin: 0;
   padding: 20px 0 28px;
   text-align: center;
   width: 396px;
-  height: 450px;
-  color: black
+  height: auto;
+  color: black;
+  position: absolute;
 }
 
 .select_ {
@@ -157,14 +160,23 @@
   border: 1px solid rgb(194, 190, 190);
   margin-top: 10px;
 }
-.signUpInput:focus{
+
+.signUpInput:focus {
   background-color: #fff;
   border-color: rgb(42, 75, 219);
   outline: none;
-  
 }
 
 .sign_up_btn:hover {
   cursor: pointer;
   background-color: #42b72a;
+}
+
+.err {
+  color: red;
+  font-size: 14px;
+  text-align: left;
+  padding: 0;
+  margin: 0px 20px 0px 20px;
+  float: left;
 }
