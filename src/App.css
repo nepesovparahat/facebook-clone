@@ -114,24 +114,6 @@
   color: black;
   position: absolute;
 }
-
-.select_ {
-  width: 111.5px;
-  border-radius: 5px;
-  color: #1c1e21;
-  font-family: SFProText-Medium, Helvetica, Arial, sans-serif;
-  font-size: 17px;
-  font-weight: normal;
-  height: 38px;
-  line-height: 22px;
-  background-position: right 6px center;
-  background-repeat: no-repeat;
-  background-size: 14px;
-  padding: 0 8px;
-  padding-right: 20px;
-  margin: 12px 5px;
-}
-
 .sign_up_btn, .register_, .logout {
   text-decoration-line: none;
   background-color: #5ccf45;
@@ -179,4 +161,40 @@
   padding: 0;
   margin: 0px 20px 0px 20px;
   float: left;
+}
+.select_ {
+  width: 111.5px;
+  border-radius: 5px;
+  color: #1c1e21;
+  font-size: 17px;
+  font-weight: normal;
+  height: 38px;
+  line-height: 22px;
+  padding: 0 8px;
+  padding-right: 20px;
+  margin: 12px 5px;
+}
+.radio_span{
+  background-color: #fff;
+    border: 1px solid #ccd0d5;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width:120px;
+    line-height: 22px;
+    color: #1c1e21;
+    display: inline-block;
+    border-color: black;
+    flex: 1 0 auto;
+    font-weight: normal;
+    height: 38px;
+    margin: 8px 6px;
+}
+.lbl{
+  box-sizing: border-box;
+    color: #1c1e21;
+    line-height: 22px;
+    font-size: 17px;
+    font-weight: normal;
+    position:relative;
+    padding: 10px 28px 0 5px;
 }
