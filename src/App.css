@@ -163,9 +163,10 @@
   float: left;
 }
 .select_ {
+  border: 1px solid rgb(194, 190, 190);
   width: 111.5px;
+  box-sizing: border-box;
   border-radius: 5px;
-  color: #1c1e21;
   font-size: 17px;
   font-weight: normal;
   height: 38px;
@@ -176,25 +177,29 @@
 }
 .radio_span{
   background-color: #fff;
-    border: 1px solid #ccd0d5;
+    border: 1px solid rgb(194, 190, 190);;
     box-sizing: border-box;
     border-radius: 5px;
-    width:120px;
-    line-height: 22px;
-    color: #1c1e21;
     display: inline-block;
-    border-color: black;
-    flex: 1 0 auto;
     font-weight: normal;
-    height: 38px;
-    margin: 8px 6px;
+    height: 36px;
+    margin: 8px 6px 6px;
+    padding: 0;
+    position: relative;
 }
 .lbl{
+  
   box-sizing: border-box;
-    color: #1c1e21;
-    line-height: 22px;
-    font-size: 17px;
-    font-weight: normal;
-    position:relative;
-    padding: 10px 28px 0 5px;
+  color: #1c1e21;
+  display: inline-block;
+  font-family: SFProText-Medium, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 36px;
+  padding: 0 50px 0 10px;
+}
+.input_{
+  height: 36px;
+    margin: 0;
+    position: absolute;
+    right: 10px;
 }
