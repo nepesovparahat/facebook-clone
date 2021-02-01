@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-const schema = yup.object().shape({
+const SignUpSchema = yup.object().shape({
     firstname: yup
         .string()
         .matches(/^([^0-9]*)$/, "First name shoul not contain number!")
@@ -44,7 +44,7 @@ const schema = yup.object().shape({
 export const Sign_up = () => {
     const { register, errors, handleSubmit } = useForm({
         mode: 'onTouched',
-        resolver: yupResolver(schema)
+        resolver: yupResolver(SignUpSchema)
     });
     const onSubmit = (data) => console.log(data);
     return (
@@ -119,6 +119,7 @@ export const Sign_up = () => {
                 <span className="err">{!!errors.gender}{errors?.gender?.message}</span>
                 <button className="register_" type="submit">Register</button>
             </form>
+            <Link to='/Sign_in' className="cancel">Cancel</Link>
         </div>
     );
 };

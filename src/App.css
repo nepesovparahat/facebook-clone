@@ -199,7 +199,7 @@
   font-family: Helvetica, Arial, sans-serif;
   font-size: 17px;
   line-height: 32px;
-  padding: 0 28px 0 10px;
+  padding: 0 30px 0 10px;
 }
 
 .input_ {
@@ -207,5 +207,13 @@
   margin: 0;
   position: absolute;
   right: 10px;
-  top: 4px;
+  top: 3px;
+}
+.cancel{
+text-align: right;
+margin-left: 275px;
+font-size: 20px;
+color:rgb(8, 8, 228);
+text-decoration: none;
+font-weight:600;
 }
