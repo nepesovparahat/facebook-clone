@@ -1,4 +1,5 @@
-.body {
+
+.div_{
   background-color: #f0f2f5;
   min-height: 100vh;
   display: flex;
@@ -18,13 +19,13 @@
   background-color: #fff;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .1), 0 8px 15px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .1), 0 8px 30px rgba(0, 0, 0, .3);
   box-sizing: border-box;
   margin: 40px 0 0;
   padding: 20px 0 28px;
   text-align: center;
   width: 396px;
-  height: 398px;
+  height: auto;
   color: black
 }
 
@@ -59,7 +60,7 @@
   display: inline-block;
   font-size: 14px;
   padding: 6px 0;
-  margin: auto;
+  margin:auto;
   border-radius: 6px;
 }
 
@@ -78,7 +79,7 @@
   border-radius: 6px;
   border: 1px solid rgb(194, 190, 190);
   margin-top: 10px;
-  display: block;
+  
 }
 
 .signIn:focus {
@@ -88,7 +89,7 @@
   border-color: rgb(42, 75, 219);
   width: 330px;
   outline: none;
-  display: block;
+  
 }
 
 /*-----------Sign UP page css*-----------*/
@@ -103,7 +104,7 @@
   background-color: #fff;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .1), 0 8px 15px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .1), 0 8px 30px rgba(0, 0, 0, .3);
   box-sizing: border-box;
   margin: 0;
   padding: 20px 0 28px;
@@ -114,7 +115,7 @@
   position: absolute;
 }
 
-.sign_up_btn, .register_, .logout {
+.sign_up_btn, .register_,.logout{
   text-decoration-line: none;
   background-color: #5ccf45;
   box-sizing: content-box;
@@ -216,4 +217,16 @@ font-size: 20px;
 color:rgb(8, 8, 228);
 text-decoration: none;
 font-weight:600;
+}
+.logout{
+position: absolute;
+right: 0;
+padding-top:0;
+margin-top: 0;
+width: 100px;
+
+
+}
+h1{
+  text-align: center;
 }

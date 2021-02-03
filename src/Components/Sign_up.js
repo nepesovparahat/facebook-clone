@@ -48,6 +48,7 @@ export const Sign_up = () => {
     });
     const onSubmit = (data) => console.log(data);
     return (
+        <div className="div_">
         <div className="sign_up">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input className="signUpInput"
@@ -120,6 +121,7 @@ export const Sign_up = () => {
                 <button className="register_" type="submit">Register</button>
             </form>
             <Link to='/Sign_in' className="cancel">Cancel</Link>
+        </div>
         </div>
     );
 };

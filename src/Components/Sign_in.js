@@ -8,26 +8,32 @@ import * as yup from 'yup';
 const signInSchema = yup.object().shape({
     email: yup
         .string()
-        .email("Email should have correct format")
-        .required("Email required field"),
+        .required(),
     password: yup
         .string()
-        .required("Password required field")
+        .required()
 })
 export const Sign_in = () => {
-    const { register, errors, handleSubmit } = useForm({
+    const { register, handleSubmit } = useForm({
         mode: 'onSubmit',
         resolver: yupResolver(signInSchema),
     })
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorPassword, setErrorPassword] = useState('');
+
     const onSubmit = (data) => {
-        if (data.email == admin.email && data.password == admin.password) {
-            console.log(data)
-            history.push("./admin");
+        if (data.email === admin.email) {
+
+            if (data.password === admin.password) {
+                history.push("./admin");
+            }
+            else {
+                setErrorPassword('Password you entered is incorrect. Did you forget your password ?');
+            }
         }
         else {
-            console.log(errors.message);
+            setErrorEmail('Email you entered does not match any account.')
         }
-
     }
     const history = useHistory();
     const admin = {
@@ -35,39 +41,40 @@ export const Sign_in = () => {
         password: "admin1234"
     }
     return (
+        <div className="div_">
             <div className="sign">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="container">
-                        <div className="input_flux">
-                            <input className="signIn"
-                                style={{ border: !!errors.email ? '1px solid red' : errors?.email?.message }}
-                                placeholder="Mobile number or email address"
-                                type="email"
-                                name="email"
-                                ref={register}
-                                required
-                            />
-                            <span className="err">{!!errors.email}{errors?.email?.message}</span>
-                            <input className="signIn"
-                                style={{ border: !!errors.password ? '1px solid red' : errors?.password?.message }}
-                                placeholder="Password"
-                                type="password"
-                                name="password"
-                                ref={register}
-                                required
-                            />
-                            <span className="err">{!!errors.password}{errors?.password?.message}</span>
-                        </div>
-                        <div>
-                            <div className="div_btn">
-                                <button className="btn" type="submit">Log In</button>
-                            </div> </div>
-                        <span className="psw"><a href="#">Forgot password ?</a></span>
-                        <hr className="line"></hr>
-                        <Link to="/Sign_up"><button className="sign_up_btn">Sign Up</button></Link>
+                    <input className="signIn"
+                        style={{ border: (errorEmail !== "") ? '1px solid red' : "" }}
+                        placeholder="Mobile number or email address"
+                        type="email"
+                        name="email"
+                        ref={register}
+                        required
+                    /><div>
+                        <span>{(errorEmail !== "") ? (<span className="err">{errorEmail}</span>) : ""}</span>
                     </div>
+                    <input className="signIn"
+                        style={{ border: (errorPassword !== "") ? '1px solid red' : "" }}
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        ref={register}
+                        required
+                    />
+                    {(errorPassword !== "") ? (<span className="err">{errorPassword}</span>) : ""}
+
+                    <div>
+                        <div className="div_btn">
+                            <button className="btn" type="submit">Log In</button>
+                        </div> </div>
+                    <span className="psw"><a href="#">Forgot password ?</a></span>
+                    <hr className="line"></hr>
+                    <Link to="/Sign_up"><button className="sign_up_btn">Sign Up</button></Link>
+
                 </form>
             </div>
-        );
+        </div>
+    );
 };
 
