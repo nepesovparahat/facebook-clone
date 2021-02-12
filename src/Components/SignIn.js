@@ -14,15 +14,20 @@ const signInSchema = yup.object().shape({
         .string()
         .required()
 })
-export const Sign_in = () => {
+const SignIn = () => {
     const { register, handleSubmit} = useForm({
         mode: 'onSubmit',
         resolver: yupResolver(signInSchema),
     })
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
-
+    
     const onSubmit = (data) => {
+       return Login_(data);
+        
+    }
+    
+    function Login_(data) {
         if (data.email === admin.email) {
             if (data.password === admin.password) {
                 history.push("./admin");  
@@ -32,11 +37,9 @@ export const Sign_in = () => {
             }  
         }
       
-       else{
-           
+       else{ 
         setErrorEmail('Email you entered does not match any account.')   
         }
-        
     }
     const history = useHistory();
     const admin = {
@@ -73,11 +76,12 @@ export const Sign_in = () => {
                         </div> </div>
                     <span className="psw"><a href="#">Forgot password ?</a></span>
                     <hr className="line"></hr>
-                    <Link to="/Sign_up"><button className="sign_up_btn" >Sign Up</button></Link>
+                    <Link to="/SignUp"><button className="sign_up_btn" >Sign Up</button></Link>
                 </form>
             </div>
         </div>
          
      );
 };
+export default SignIn;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-export const Admin = () =>{
+ const Admin = () =>{
      return(
         <div>
             
@@ -9,3 +9,4 @@ export const Admin = () =>{
         </div>
     )
 }
+export default Admin;

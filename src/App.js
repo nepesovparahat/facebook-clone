@@ -1,6 +1,6 @@
-import { Sign_in } from './Components/Sign_in';
-import { Sign_up } from './Components/Sign_up';
-import { Admin } from './Components/Admin';
+import  SignIn from './Components/SignIn'
+import SignUp  from './Components/SignUp';
+import  Admin  from './Components/Admin';
 import {BrowserRouter as Router, Switch, Route,} from "react-router-dom";
 import './App.css';
 export function App() {
@@ -8,10 +8,10 @@ export function App() {
     <Router>
       <div className="body">
         <Switch>
-          <Route exact path='/' component={Sign_in}/>
-          <Route path='/Sign_in' component={Sign_in}/>
-          <Route path='/Sign_up' component={Sign_up}/>
-          <Route path='/Admin' component={Admin}/>
+          <Route exact path='/'><SignIn/></Route>
+          <Route path='/SignIn'><SignIn /></Route>
+          <Route path='/SignUp'><SignUp/></Route>
+          <Route path='/Admin' ><Admin/></Route>
         </Switch>
       </div>
     </Router>
