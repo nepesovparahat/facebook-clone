@@ -52,8 +52,10 @@ const SignUp = (props) => {
         resolver: yupResolver(SignUpSchema),
        
     }); 
-    let arr = [];
     const onSubmit = () => {  
+        history.push('/Results');
+        
+        
     };
     return (
         <div className="div_">
@@ -73,6 +75,7 @@ const SignUp = (props) => {
                     placeholder="Your name"
                     required
                 /><br />
+              
                 <span className="err">{!!errors.firstname}{errors?.firstname?.message}</span>
                 <input className="signUpInput"
                     style={{border: !!errors.lastname ? '1px solid red': errors?.lastname?.message}}
@@ -174,9 +177,9 @@ const SignUp = (props) => {
                     />
                 </span><br />
                 <span className="err">{!!errors.gender}{errors?.gender?.message}</span>
-                <button className="register_" type="submit"  onClick={(event) => {
+                <button className="register_" type="submit" onMouseUp={(event) => {
             event.preventDefault();
-            print(SignUpList);
+            print(signUpstate);
           }}>Register</button>
             </form>
             <Link to='/SignIn' className="cancel">Cancel</Link>
@@ -188,7 +191,7 @@ const SignUp = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        SignUpList: state,
+        SignUpList: state.sign_Up,
     };
 };
 const mapDispatchToProps = (dispatch) => {

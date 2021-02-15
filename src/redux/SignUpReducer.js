@@ -9,8 +9,9 @@ const SignUpReducer = (state = SignUpState, action) => {
           state.push(action.payload);
           return [...state];
         default:
-          return state;
+            return state;   
       }
+      
   }
 
 

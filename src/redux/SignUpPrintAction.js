@@ -1,5 +1,5 @@
 const signUpActiontype = {
-    PRINT: "PRINT",
+    PRINT: "PRINT_SignUP",
   };
   
   const signUpAction = (res) => {
