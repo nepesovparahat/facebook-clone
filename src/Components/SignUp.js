@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useHistory} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {signUpAction} from '../redux/SignUpPrintAction';
 import { connect } from 'react-redux';
 import * as yup from 'yup';
+import { addSignUpAction } from '../redux/SignUpAction';
 const SignUpSchema = yup.object().shape({
     firstname: yup
         .string()
@@ -41,26 +41,22 @@ const SignUpSchema = yup.object().shape({
     gender: yup
         .string()
         .required("Select your gender required field")
-
 });
 const SignUp = (props) => {
+  const {SignUpList, add} = props; 
    const [signUpstate, setsignUpstate] = useState({})
-   const {SignUpList, print} = props; 
     const history = useHistory();
     const { register, errors, handleSubmit } = useForm({
         mode: 'onTouched',
         resolver: yupResolver(SignUpSchema),
-       
-    }); 
+       }); 
     const onSubmit = () => {  
-        history.push('/Results');
-        
-        
+        history.push('/Results');   
     };
     return (
         <div className="div_">
             <div className="sign_up">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} >
                 <input className="signUpInput"
                     style={{border: !!errors.firstname ? '1px solid red': errors?.firstname?.message}}
                     type="text"
@@ -75,7 +71,6 @@ const SignUp = (props) => {
                     placeholder="Your name"
                     required
                 /><br />
-              
                 <span className="err">{!!errors.firstname}{errors?.firstname?.message}</span>
                 <input className="signUpInput"
                     style={{border: !!errors.lastname ? '1px solid red': errors?.lastname?.message}}
@@ -177,28 +172,26 @@ const SignUp = (props) => {
                     />
                 </span><br />
                 <span className="err">{!!errors.gender}{errors?.gender?.message}</span>
-                <button className="register_" type="submit" onMouseUp={(event) => {
+                <button className="register_" type="submit" onMouseMove={(event) => {
             event.preventDefault();
-            print(signUpstate);
+            add(signUpstate);
           }}>Register</button>
             </form>
             <Link to='/SignIn' className="cancel">Cancel</Link>
         </div>
         </div>
-        
     );
 };
-
 const mapStateToProps = (state) => {
-    return {
-        SignUpList: state.sign_Up,
-    };
+  return {
+    SignUpList: state,
+  };
 };
 const mapDispatchToProps = (dispatch) => {
-    return {
-        print: (res) =>{
-            dispatch(signUpAction(res));
-        },
+  return {
+    add: (res) => {
+       dispatch(addSignUpAction(res));
     }
+  };
 };
 export default connect(mapStateToProps, mapDispatchToProps) (SignUp);

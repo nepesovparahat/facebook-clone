@@ -23,10 +23,8 @@ const SignIn = () => {
     const [errorPassword, setErrorPassword] = useState('');
     
     const onSubmit = (data) => {
-       return Login_(data);
-        
+       return Login_(data); 
     }
-    
     function Login_(data) {
         if (data.email === admin.email) {
             if (data.password === admin.password) {
@@ -36,7 +34,6 @@ const SignIn = () => {
             setErrorPassword('Password you entered is incorrect. Did you forget your password ?');   
             }  
         }
-      
        else{ 
         setErrorEmail('Email you entered does not match any account.')   
         }
@@ -79,8 +76,7 @@ const SignIn = () => {
                     <Link to="/SignUp"><button className="sign_up_btn" >Sign Up</button></Link>
                 </form>
             </div>
-        </div>
-         
+        </div>  
      );
 };
 export default SignIn;
