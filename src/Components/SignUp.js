@@ -51,7 +51,7 @@ const SignUp = (props) => {
         resolver: yupResolver(SignUpSchema),
        }); 
     const onSubmit = () => {  
-        history.push('/Results');   
+        history.push('/Results');  
     };
     return (
         <div className="div_">

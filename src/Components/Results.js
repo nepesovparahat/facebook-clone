@@ -2,26 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 const Results =(props) =>{
     const {SignUpList} = props; 
-console.log(SignUpList)
+    let set =new Set(); 
+    const objlength =Object.keys(SignUpList).length
+    for(let i =0;i<objlength;i++){
+        set.add(SignUpList[i]);
+    }
+    //used the set method so that it does not show the same repeated data.
+    const userset = [...set]
+    //used the spread operator to convert set to array
     return(
-        <>
-       <div>
+       <div className="form">
            <ul>
-               {SignUpList.map((d,i)=>(
-                   <li key={i}>
-                    FIRSTNAME:{d.firstname}
-                   <br/>LASTNAME: {d.lastname}
-                   <br/>EMAIL: {d.email}
-                   <br/>PASSWORD: {d.password}
-                   <br/> BIRTHDAY: {d.birthday_day}
-                   <br/> MONTH OF BIRTH: {d.birthday_month}
-                   <br/> YEAR OF BIRTH: {d.birthday_year}
-                   <br/> GENDER: {d.gender}
-                   </li>
-               ))}
-           </ul>
+           {userset.map((item,id)=>(
+               <li key={id}>
+                    <span>FIRSTNAME:{item.firstname}</span>
+                   <br/>
+                   <span>LASTNAME: {item.lastname}</span>
+                   <br/><span>EMAIL: {item.email}</span>
+                   <br/><span>PASSWORD: {item.password}</span>
+                   <br/> <span>BIRTHDAY: {item.birthday_day}</span>
+                   <br/> <span>MONTH OF BIRTH: {item.birthday_month}</span> 
+                   <br/> <span>YEAR OF BIRTH: {item.birthday_year}</span> 
+                   <br/> <span> GENDER: {item.gender}</span>
+               </li>
+           ))}
+       </ul>
        </div>
-        </>
     )
 };
 const mapStateToProps = (state) => {
