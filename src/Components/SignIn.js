@@ -54,7 +54,6 @@ const SignIn = () => {
                         type="email"
                         name="email"
                         ref={register}
-                        required
                     /><div>
                         <span>{(errorEmail !== "") ? (<span className="err">{errorEmail}</span>) :"" }</span>
                     </div>
@@ -64,7 +63,6 @@ const SignIn = () => {
                         type="password"
                         name="password"
                         ref={register}
-                        required
                     />
                     {(errorPassword !== "") ? (<span className="err">{errorPassword}</span>) : ""}
                     <div>

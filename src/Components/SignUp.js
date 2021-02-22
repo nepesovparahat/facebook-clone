@@ -47,7 +47,7 @@ const SignUp = (props) => {
    const [signUpstate, setsignUpstate] = useState({})
     const history = useHistory();
     const { register, errors, handleSubmit } = useForm({
-        mode: 'onTouched',
+        mode: 'onBlur',
         resolver: yupResolver(SignUpSchema),
        }); 
     const onSubmit = () => {  
@@ -57,7 +57,8 @@ const SignUp = (props) => {
         <div className="div_">
             <div className="sign_up">
             <form onSubmit={handleSubmit(onSubmit)} >
-                <input className="signUpInput"
+              <div className="input_div1">
+              <input className="input1"
                     style={{border: !!errors.firstname ? '1px solid red': errors?.firstname?.message}}
                     type="text"
                     name="firstname"
@@ -69,10 +70,11 @@ const SignUp = (props) => {
                         });
                       }}
                     placeholder="Your name"
-                    required
-                /><br />
+                />
                 <span className="err">{!!errors.firstname}{errors?.firstname?.message}</span>
-                <input className="signUpInput"
+              </div>
+              <div className="input_div1">
+              <input className="input1"
                     style={{border: !!errors.lastname ? '1px solid red': errors?.lastname?.message}}
                     type="text"
                     placeholder="Your surname"
@@ -84,10 +86,14 @@ const SignUp = (props) => {
                           ...{ lastname: event.target.value },
                         });
                       }}
-                    required
+                    
                 />
-                <br />
+                
                 <span className="err">{!!errors.lastname}{errors?.lastname?.message}</span>
+              </div>
+                
+                
+              
                 <input className="signUpInput"
                     style={{border: !!errors.email ? '1px solid red': errors?.email?.message}}
                     type="email"
@@ -100,7 +106,6 @@ const SignUp = (props) => {
                           ...{ email: event.target.value },
                         });
                       }}
-                    required
                 />
                 <br />
                 <span className="err">{!!errors.email}{errors?.email?.message}</span>
@@ -116,7 +121,6 @@ const SignUp = (props) => {
                           ...{ password: event.target.value },
                         });
                       }}
-                    required
                 />
                 <br />
                 <span className="err">{!!errors.password}{errors?.password?.message}</span>
@@ -156,7 +160,7 @@ const SignUp = (props) => {
                 <div className="err">{!!errors.birthday_month}{errors?.birthday_month?.message}</div>
                 <div className="err">{!!errors.birthday_year}{errors?.birthday_year?.message}</div>
                 <span className="radio_span"style={{border: !!errors.gender ? '1px solid red': errors?.gender?.message}}>
-                    <label className="lbl">Female</label>
+                    <label className="lbl">Famale</label>
                     <input type="radio" className="input_" name="gender" value="Famele" ref={register}
                     onChange={(event) => {
                         setsignUpstate({
@@ -167,9 +171,28 @@ const SignUp = (props) => {
                      />
                 </span>
                 <span className="radio_span"style={{border: !!errors.gender ? '1px solid red': errors?.gender?.message}}>
-                    <label className="lbl">Male</label>
+                    <label className="lbl">Special</label>
+                    <input type="radio" className="input_" name="gender" value="Special" ref={register}
+                    onChange={(event) => {
+                        setsignUpstate({
+                          ...signUpstate,
+                          ...{ gender: event.target.value },
+                        });
+                      }}
+                     />
+                </span>
+                <span className="radio_span"style={{border: !!errors.gender ? '1px solid red': errors?.gender?.message}}>
+                  
+                <label className="lbl">Male</label>
                     <input className="input_" type="radio" name="gender" value="Male" ref={register} 
+                    onChange={(event) => {
+                      setsignUpstate({
+                        ...signUpstate,
+                        ...{ gender: event.target.value },
+                      });
+                    }}
                     />
+                 
                 </span><br />
                 <span className="err">{!!errors.gender}{errors?.gender?.message}</span>
                 <button className="register_" type="submit" onMouseMove={(event) => {

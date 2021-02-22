@@ -89,7 +89,6 @@
   border-color: rgb(42, 75, 219);
   width: 330px;
   outline: none;
-  
 }
 
 /*-----------Sign UP page css*-----------*/
@@ -99,7 +98,6 @@
 }
 
 .sign_up {
-  display: block;
   align-items: center;
   background-color: #fff;
   border: none;
@@ -109,10 +107,13 @@
   margin: 0;
   padding: 20px 0 28px;
   text-align: center;
-  width: 396px;
+  width: 430px;
   height: auto;
   color: black;
-  position: absolute;
+}
+.input_div1{
+float: left;
+padding-left: 17px;
 }
 
 .sign_up_btn, .register_,.logout{
@@ -138,12 +139,24 @@
 .signUpInput {
   font-size: 17px;
   padding: 10px 12px;
-  width: 330px;
+  width: 370px;
   border-radius: 5px;
   border: 1px solid rgb(194, 190, 190);
   margin-top: 10px;
 }
-
+.input1{
+  font-size: 17px;
+  padding: 10px 12px;
+  width: 164px;
+  border-radius: 5px;
+  border: 1px solid rgb(194, 190, 190);
+  margin-top: 10px;
+}
+.input1:focus{
+  background-color: #fff;
+  border-color: rgb(42, 75, 219);
+  outline: none;
+}
 .signUpInput:focus {
   background-color: #fff;
   border-color: rgb(42, 75, 219);
@@ -167,7 +180,7 @@
 
 .select_ {
   border: 1px solid rgb(194, 190, 190);
-  width: 111.5px;
+  width: 125px;
   box-sizing: border-box;
   border-radius: 5px;
   font-size: 17px;
@@ -182,33 +195,31 @@
 .radio_span {
   background-color: #fff;
   border: 1px solid rgb(194, 190, 190);
-  ;
   box-sizing: border-box;
   border-radius: 5px;
-  display: inline-block;
-  font-weight: normal;
-  height: auto;
+  display: inline-flex;
+  height: 38px;
   margin: 8px 6px 6px;
-  padding: 0;
+  padding:0;
   position: relative;
 }
 
 .lbl {
   box-sizing: border-box;
   color: #1c1e21;
-  display: inline-block;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 17px;
-  line-height: 32px;
-  padding: 0 30px 0 10px;
+  font-size: 19px;
+  padding: 0 51px 0 15px;
+  line-height:38px;
+ 
 }
 
 .input_ {
-  height: 32px;
+  height: 30px;
   margin: 0;
   position: absolute;
   right: 10px;
-  top: 3px;
+  top: 2px;
 }
 .cancel{
 text-align: right;
