@@ -32,7 +32,7 @@ const Results =(props) =>{
 };
 const mapStateToProps = (state) => {
     return {
-      SignUpList: state,
+      SignUpList: state.signup,
     };
   };
 export default connect(mapStateToProps) (Results)

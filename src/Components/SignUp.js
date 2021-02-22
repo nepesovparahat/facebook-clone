@@ -184,7 +184,7 @@ const SignUp = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    SignUpList: state,
+    SignUpList: state.signup,
   };
 };
 const mapDispatchToProps = (dispatch) => {
