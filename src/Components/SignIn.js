@@ -71,7 +71,7 @@ const SignIn = () => {
                         </div> </div>
                     <span className="psw"><a href="#">Forgot password ?</a></span>
                     <hr className="line"></hr>
-                    <Link to="/SignUp"><button className="sign_up_btn" >Sign Up</button></Link>
+                    <Link to="/SignUp"><button className="sign_up_btn" >Create New Account</button></Link>
                 </form>
             </div>
         </div>  

@@ -18,6 +18,9 @@ const SignUpSchema = yup.object().shape({
         .string()
         .email("Email should have correct format")
         .required("Email is a required field"),
+    emailConfirm: yup
+        .string()
+        .oneOf([yup.ref('email')],'Your emal do not match'),
         password: yup
         .string()
         .matches(
@@ -46,16 +49,21 @@ const SignUp = (props) => {
   const {SignUpList, add} = props; 
    const [signUpstate, setsignUpstate] = useState({})
     const history = useHistory();
-    const { register, errors, handleSubmit } = useForm({
+    const { register, errors, handleSubmit, watch } = useForm({
         mode: 'onBlur',
         resolver: yupResolver(SignUpSchema),
        }); 
+    const email =watch('email');
     const onSubmit = () => {  
         history.push('/Results');  
     };
     return (
         <div className="div_">
             <div className="sign_up">
+              <div>
+                <span className="head">Sign Up</span><br/>
+                <p className="subhead">It's quick and easy.</p>
+              </div>
             <form onSubmit={handleSubmit(onSubmit)} >
               <div className="input_div1">
               <input className="input1"
@@ -86,15 +94,10 @@ const SignUp = (props) => {
                           ...{ lastname: event.target.value },
                         });
                       }}
-                    
                 />
-                
                 <span className="err">{!!errors.lastname}{errors?.lastname?.message}</span>
               </div>
-                
-                
-              
-                <input className="signUpInput"
+              <input className="signUpInput"
                     style={{border: !!errors.email ? '1px solid red': errors?.email?.message}}
                     type="email"
                     name="email"
@@ -109,6 +112,22 @@ const SignUp = (props) => {
                 />
                 <br />
                 <span className="err">{!!errors.email}{errors?.email?.message}</span>
+                {email && (
+                  <input className="signUpInput"
+                  style={{border: !!errors.emailConfirm ? '1px solid red': errors?.emailConfirm?.message}}
+                  type="email"
+                  name="emailConfirm"
+                  placeholder="Re-enter e-mail"
+                  ref={register}
+                  onChange={(event) => {
+                      setsignUpstate({
+                        ...signUpstate,
+                        ...{ emailConfirm: event.target.value },
+                      });
+                    }}
+              />
+                )}
+              <span className="err">{!!errors.emailConfirm}{errors?.emailConfirm?.message}</span>
                 <input className="signUpInput"
                     style={{border: !!errors.password ? '1px solid red': errors?.password?.message}}
                     type="password"
@@ -171,17 +190,6 @@ const SignUp = (props) => {
                      />
                 </span>
                 <span className="radio_span"style={{border: !!errors.gender ? '1px solid red': errors?.gender?.message}}>
-                    <label className="lbl">Special</label>
-                    <input type="radio" className="input_" name="gender" value="Special" ref={register}
-                    onChange={(event) => {
-                        setsignUpstate({
-                          ...signUpstate,
-                          ...{ gender: event.target.value },
-                        });
-                      }}
-                     />
-                </span>
-                <span className="radio_span"style={{border: !!errors.gender ? '1px solid red': errors?.gender?.message}}>
                   
                 <label className="lbl">Male</label>
                     <input className="input_" type="radio" name="gender" value="Male" ref={register} 
@@ -192,13 +200,24 @@ const SignUp = (props) => {
                       });
                     }}
                     />
-                 
-                </span><br />
+                </span>
+                <span className="radio_span"style={{border: !!errors.gender ? '1px solid red': errors?.gender?.message}}>
+                    <label className="lbl">Custom</label>
+                    <input type="radio" className="input_" name="gender" value="Custom" ref={register}
+                    onChange={(event) => {
+                        setsignUpstate({
+                          ...signUpstate,
+                          ...{ gender: event.target.value },
+                        });
+                      }}
+                     />
+                </span>
+                <br />
                 <span className="err">{!!errors.gender}{errors?.gender?.message}</span>
                 <button className="register_" type="submit" onMouseMove={(event) => {
             event.preventDefault();
             add(signUpstate);
-          }}>Register</button>
+          }}>Sign Up</button>
             </form>
             <Link to='/SignIn' className="cancel">Cancel</Link>
         </div>
