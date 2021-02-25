@@ -58,7 +58,7 @@ const SignUp = (props) => {
         history.push('/Results');  
     };
     return (
-        <div className="div_">
+        <div className="sign_up_nav">
             <div className="sign_up">
               <div>
                 <span className="head">Sign Up</span><br/>

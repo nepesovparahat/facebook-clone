@@ -1,11 +1,28 @@
-.div_ {
-  background-color: #f0f2f5;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+body {
+  background: #f0f2f5;
+}
+
+.body-div {
+  padding: 72px 112px;
   justify-content: center;
-  font-size: calc(20px + 2vmin);
+  display: flex;
+  margin-top: 50px;
+}
+
+.h2_ {
+  font-weight: normal;
+  font-size: 32px;
+  width: 550px;
+  padding-right: 50px;
+  line-height: 35px;
+}
+
+.logo {
+  width: 280px;
+  height: 100px;
+  bottom: 0;
+  padding-top: 85px;
+  margin-top: 0;
 }
 
 .error {
@@ -93,6 +110,8 @@
 
 .sign_up_nav {
   margin-top: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 .sign_up {
@@ -218,6 +237,7 @@
   box-sizing: border-box;
   border-radius: 5px;
   display: inline-flex;
+  width: 124px;
   height: 38px;
   margin: 8px 6px 6px;
   padding: 0;
@@ -260,12 +280,6 @@
 
 h1 {
   text-align: center;
-}
-
-.logo {
-  width: 280px;
-  height: 100px;
-  bottom: 0;
 }
 
 .form ul {

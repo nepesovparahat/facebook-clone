@@ -7,7 +7,6 @@ import './App.css';
  export function App() {
   return (
     <Router>
-      <div className="body">
         <Switch>
           <Route exact path='/'><SignIn/></Route>
           <Route path='/SignIn'><SignIn /></Route>
@@ -15,7 +14,6 @@ import './App.css';
           <Route path='/Admin' ><Admin/></Route>
           <Route path = '/Results'><Results/></Route>
         </Switch>
-      </div>
     </Router>
   );
 }
