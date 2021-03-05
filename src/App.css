@@ -101,7 +101,7 @@ body {
   background-color: #fff;
   font-size: 17px;
   padding: 14px 16px;
-  border-color: rgb(42, 75, 219);
+  border-color: solid;
   width: 330px;
   outline: none;
 }
@@ -130,8 +130,13 @@ body {
 }
 
 .input_div1 {
-  float: left;
+ 
   padding-left: 17px;
+}
+.div1{
+  display: flex;
+  flex-wrap: wrap;
+ 
 }
 
 .sign_up_btn, .logout {
@@ -153,7 +158,7 @@ body {
   vertical-align: middle;
 }
 
-.register_ {
+.register-btn{
   text-decoration-line: none;
   background-color: #33991f;
   box-sizing: content-box;
@@ -170,6 +175,11 @@ body {
   text-align: center;
   text-shadow: none;
   vertical-align: middle;
+}
+.register-btn:hover{
+  cursor: pointer;
+  background-color: #4ca053;
+  border: none;
 }
 
 .signUpInput {
@@ -192,13 +202,13 @@ body {
 
 .input1:focus {
   background-color: #fff;
-  border-color: rgb(42, 75, 219);
+  border-color: solid;
   outline: none;
 }
 
 .signUpInput:focus {
   background-color: #fff;
-  border-color: rgb(42, 75, 219);
+  border-color: solid;
   outline: none;
 }
 
@@ -207,14 +217,16 @@ body {
   background-color: #42b72a;
 }
 
+
 .err {
   color: red;
   font-size: 14px;
   text-align: left;
-  padding: 0;
+  padding:0;
   margin: 0px 20px 0px 20px;
   clear: both;
   display: block;
+  
 }
 
 .select_ {

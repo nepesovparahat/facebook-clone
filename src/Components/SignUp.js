@@ -54,8 +54,8 @@ const SignUp = (props) => {
         resolver: yupResolver(SignUpSchema),
        }); 
     const email =watch('email');
-    const onSubmit = () => {  
-        history.push('/Results');  
+    const onSubmit = (data) => {  
+        history.push('/Results'); 
     };
     return (
         <div className="sign_up_nav">
@@ -65,6 +65,7 @@ const SignUp = (props) => {
                 <p className="subhead">It's quick and easy.</p>
               </div>
             <form onSubmit={handleSubmit(onSubmit)} >
+              <div className="div1">
               <div className="input_div1">
               <input className="input1"
                     style={{border: !!errors.firstname ? '1px solid red': errors?.firstname?.message}}
@@ -79,7 +80,9 @@ const SignUp = (props) => {
                       }}
                     placeholder="Your name"
                 />
-                <span className="err">{!!errors.firstname}{errors?.firstname?.message}</span>
+               
+                <div className="err div1">{!!errors.firstname}{errors?.firstname?.message}</div>
+            
               </div>
               <div className="input_div1">
               <input className="input1"
@@ -95,13 +98,15 @@ const SignUp = (props) => {
                         });
                       }}
                 />
-                <span className="err">{!!errors.lastname}{errors?.lastname?.message}</span>
+              <div className="err div1">{!!errors.lastname}{errors?.lastname?.message}</div>
+                
+              </div>
               </div>
               <input className="signUpInput"
                     style={{border: !!errors.email ? '1px solid red': errors?.email?.message}}
                     type="email"
                     name="email"
-                    placeholder="Mobile number or e-mail"
+                    placeholder="Your e-mail"
                     ref={register}
                     onChange={(event) => {
                         setsignUpstate({
@@ -214,7 +219,7 @@ const SignUp = (props) => {
                 </span>
                 <br />
                 <span className="err">{!!errors.gender}{errors?.gender?.message}</span>
-                <button className="register_" type="submit" onMouseMove={(event) => {
+                <button className="register-btn" type="submit" onMouseMove={(event) => {
             event.preventDefault();
             add(signUpstate);
           }}>Sign Up</button>
