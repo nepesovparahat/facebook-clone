@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import axios from 'axios';
 const signInSchema = yup.object().shape({
     email: yup
         .string()
@@ -23,7 +22,7 @@ const SignIn = () => {
     const [errorPassword, setErrorPassword] = useState('');
     
     const onSubmit = (data) => {
-       return Login_(data); 
+      return Login_(data);
     }
     function Login_(data) {
         if (data.email === admin.email) {
@@ -51,6 +50,7 @@ const SignIn = () => {
                 </div> 
                 <div className="sign">
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-body">
                         <input className="signIn"
                             style={{ border: (errorEmail !== "") ? '1px solid red' : "" }}
                             placeholder="Mobile number or email address"
@@ -59,14 +59,15 @@ const SignIn = () => {
                             ref={register}
                         /><div>
                             <span>{(errorEmail !== "") ? (<span className="err">{errorEmail}</span>) :"" }</span>
-                        </div>
+                        </div></div>
+                        <div className="form_body">
                         <input className="signIn"
                             style={{ border: (errorPassword !== "") ? '1px solid red' : "" }}
                             placeholder="Password"
                             type="password"
                             name="password"
                             ref={register}
-                        />
+                        /></div>
                         {(errorPassword !== "") ? (<span className="err">{errorPassword}</span>) : ""}
                         <div>
                             <div className="div_btn">
