@@ -12,18 +12,18 @@ const Results =(props) =>{
     //used the spread operator to convert set to array
     return(
        <div className="form">
-           <ul>
+           <ul className="results">
            {userset.map((item,id)=>(
                <li key={id}>
                     <span>FIRSTNAME:{item.firstname}</span>
                    <br/>
-                   <span>LASTNAME: {item.lastname}</span>
-                   <br/><span>EMAIL: {item.email}</span>
-                   <br/><span>PASSWORD: {item.password}</span>
-                   <br/> <span>BIRTHDAY: {item.birthday_day}</span>
-                   <br/> <span>MONTH OF BIRTH: {item.birthday_month}</span> 
-                   <br/> <span>YEAR OF BIRTH: {item.birthday_year}</span> 
-                   <br/> <span> GENDER: {item.gender}</span>
+                   <span>LASTNAME: <span className="result_item">{item.lastname}</span></span>
+                   <br/><span>EMAIL: <span className="result_item">{item.email}</span></span>
+                   <br/><span>PASSWORD: <span className="result_item">{item.password}</span></span>
+                   <br/> <span>BIRTHDAY: <span className="result_item">{item.birthday_day}</span></span>
+                   <br/> <span>MONTH OF BIRTH: <span className="result_item">{item.birthday_month}</span></span> 
+                   <br/> <span>YEAR OF BIRTH: <span className="result_item">{item.birthday_year}</span></span> 
+                   <br/> <span> GENDER: <span className="result_item"> {item.gender}</span></span>
                </li>
            ))}
        </ul>

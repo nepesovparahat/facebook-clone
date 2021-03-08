@@ -54,8 +54,12 @@ const SignUp = (props) => {
         resolver: yupResolver(SignUpSchema),
        }); 
     const email =watch('email');
-    const onSubmit = (data) => {  
-        history.push('/Results'); 
+    const click = () =>{
+      history.push('/Results'); 
+    }
+    const onSubmit = () => {  
+      
+        
     };
     return (
         <div className="sign_up_nav">
@@ -219,10 +223,12 @@ const SignUp = (props) => {
                 </span>
                 <br />
                 <span className="err">{!!errors.gender}{errors?.gender?.message}</span>
-                <button className="register-btn" type="submit" onMouseMove={(event) => {
+                <button className="register-btn" type="submit">Sign Up</button><br/>
+          <button className="record-btn"  onClick={(event) => {
+            click()
             event.preventDefault();
             add(signUpstate);
-          }}>Sign Up</button>
+          }}>Show Record</button>
             </form>
             <Link to='/SignIn' className="cancel">Cancel</Link>
         </div>
