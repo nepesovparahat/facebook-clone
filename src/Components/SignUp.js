@@ -53,13 +53,11 @@ const SignUp = (props) => {
         mode: 'onBlur',
         resolver: yupResolver(SignUpSchema),
        }); 
-    const email =watch('email');
+    const email = watch('email');
     const click = () =>{
       history.push('/Results'); 
     }
-    const onSubmit = () => {  
-      
-        
+    const onSubmit = () => { 
     };
     return (
         <div className="sign_up_nav">
