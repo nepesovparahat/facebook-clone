@@ -4,4 +4,5 @@ const signupactiontype = {
 const addSignUpAction = (res) =>{
     return { type: signupactiontype.ADD, payload: res };
 };
+
 export {signupactiontype,addSignUpAction};

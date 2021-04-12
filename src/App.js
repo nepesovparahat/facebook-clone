@@ -4,7 +4,8 @@ import  Admin  from './Components/Admin';
 import Results from './Components/Results';
 import {BrowserRouter as Router, Switch, Route,} from "react-router-dom";
 import './App.css';
- export function App() {
+
+const App = () => {
   return (
     <Router>
         <Switch>
@@ -17,5 +18,7 @@ import './App.css';
     </Router>
   );
 }
+
+export default App;
 
 

@@ -10,4 +10,5 @@ const SignUpReducer = (state = SignUpState,action) =>{
           return state;
       }
 }
+
 export default SignUpReducer;

@@ -1,15 +1,14 @@
-
 body {
   background: #f0f2f5;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
 *,
 *:before,
-*:after{
-       box-sizing: inherit;
- }
+*:after {
+  box-sizing: inherit;
+}
 .wrapper {
   width: 97%;
   max-width: 1200px;
@@ -19,44 +18,45 @@ body {
 
 .row {
   display: flex;
-float: left;
+  float: left;
 }
-
 
 /*Mobile screen css */
-@media only screen and (min-width:480px){
-  .col-1
-  .col-2{
-      width:33%;
+@media only screen and (min-width: 480px) {
+  .col-1 {
+    width: 80%;
+    margin-left: auto;
   }
-.h2_{
-  font-weight: normal;
-  font-size: 24px;
-  width: 450px;
+  .col-2 {
+    width: 33%;
+    margin: auto;
+    margin-bottom: 100px;
+  }
+  .h2_ {
+    font-weight: normal;
+    font-size: 24px;
+    align-items: center;
+  }
 }
- 
-   }
-   
 
 /*Desktop screen css*/
-@media only screen and (min-width:768px){
-  .col-1{
-    width:  70%;
+@media only screen and (min-width: 768px) {
+  .col-1 {
+    width: 70%;
   }
-  .col-2{
+  .col-2 {
     width: 25%;
   }
-  .h2_{
+  .h2_ {
     font-weight: normal;
-  font-size: 28px;
-  width: 560px;
-  
+    font-size: 28px;
+    width: 560px;
   }
   [class*="col-"] {
     margin-top: 80px;
     margin-left: 80px;
-    flex:0 0 92%;
-}
+    flex: 0 0 92%;
+  }
 }
 
 .logo {
@@ -77,14 +77,14 @@ float: left;
   background-color: #fff;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .1), 0 8px 30px rgba(0, 0, 0, .3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 8px 30px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   margin: 40px 0 0;
   padding: 20px 0 28px;
   text-align: center;
   width: 396px;
   height: auto;
-  color: black
+  color: black;
 }
 
 .btn {
@@ -157,7 +157,7 @@ float: left;
   display: flex;
   justify-content: center;
 }
-.frm{
+.frm {
   border-top: 1px solid #daded1;
 }
 
@@ -166,7 +166,7 @@ float: left;
   background-color: #fff;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .1), 0 8px 30px rgba(0, 0, 0, .3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 8px 30px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   margin: 0;
   padding: 20px 0 28px;
@@ -177,23 +177,24 @@ float: left;
 }
 
 .input_div1 {
- float: left;
- margin-left: 17px;
+  float: left;
+  margin-left: 17px;
 }
-.input_div2{
+.input_div2 {
   float: right;
   margin-right: 17px;
 }
-.div1_err{
+.div1_err {
   color: red;
   font-size: 14px;
   text-align: left;
-  padding:0;
+  padding: 0;
   clear: both;
   display: block;
 }
 
-.sign_up_btn, .logout {
+.sign_up_btn,
+.logout {
   text-decoration-line: none;
   background-color: #5ccf45;
   box-sizing: content-box;
@@ -212,7 +213,7 @@ float: left;
   vertical-align: middle;
 }
 
-.register-btn{
+.register-btn {
   text-decoration-line: none;
   background-color: #33991f;
   box-sizing: content-box;
@@ -230,7 +231,7 @@ float: left;
   text-shadow: none;
   vertical-align: middle;
 }
-.register-btn:hover{
+.register-btn:hover {
   cursor: pointer;
   background-color: #4ca053;
   border: none;
@@ -271,20 +272,17 @@ float: left;
   background-color: #42b72a;
 }
 
-
 .err {
   color: red;
   font-size: 14px;
   text-align: left;
-  padding:0;
+  padding: 0;
   margin-left: 17px;
   clear: both;
   display: block;
-  
 }
 
-  
-  .select_{
+.select_ {
   border: 1px solid rgb(194, 190, 190);
   width: 125px;
   box-sizing: border-box;
@@ -368,20 +366,23 @@ h1 {
   padding-left: 20px;
   padding-top: 0;
 }
-.results{
+.results {
   text-align: justify;
   line-height: 40px;
 }
-.result_item{
-  margin-left: 30px;
-}
-.record-btn{
+
+.record-btn {
   text-decoration-line: none;
   transition: 0.5s;
-  background-image: linear-gradient(to right, #c9bb3a 0%, #c1c431 51%, #0ae942 100%);
+  background-image: linear-gradient(
+    to right,
+    #c9bb3a 0%,
+    #c1c431 51%,
+    #0ae942 100%
+  );
   background-size: 200% auto;
   color: white;
- /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   box-shadow: 0 0 20px #eee;
   box-sizing: content-box;
   border: none;
@@ -399,6 +400,6 @@ h1 {
   vertical-align: middle;
   cursor: pointer;
 }
-.record-btn:hover{
+.record-btn:hover {
   background-position: right center;
 }

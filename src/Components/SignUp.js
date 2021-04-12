@@ -1,237 +1,361 @@
-import React, { useState } from 'react';
-import { Link, useHistory} from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { connect } from 'react-redux';
-import * as yup from 'yup';
-import { addSignUpAction } from '../redux/SignUpAction';
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { connect } from "react-redux";
+import * as yup from "yup";
+import { addSignUpAction } from "../redux/SignUpAction";
+
 const SignUpSchema = yup.object().shape({
-    firstname: yup
-        .string()
-        .matches(/^([^0-9]*)$/, "First name shoul not contain number!")
-        .required("First name required field"),
-    lastname: yup
-        .string()
-        .matches(/^([^0-9]*)$/, "Last name shoul not contain number!")
-        .required("Last name required field"),
-    email: yup
-        .string()
-        .email("Email should have correct format")
-        .required("Email is a required field"),
-    emailConfirm: yup
-        .string()
-        .oneOf([yup.ref('email')],'Your emal do not match'),
-        password: yup
-        .string()
-        .matches(
-            /^.*(?=.{6,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1}).*$/,
-            "Password must contain at least 6 characters, one special case character"
-        )
-        .required("Please enter your password"),
-    birthday_day: yup
-        .number().transform(value =>
-            isNaN(value) ? undefined : value
-        )
-        .required("Select your date of birth required"),
-    birthday_month: yup
-        .string()
-        .required("Select your date of month required"),
-    birthday_year: yup
-        .number().transform(value =>
-            isNaN(value) ? undefined : value
-        )
-        .required("Select your date of year required"),
-    gender: yup
-        .string()
-        .required("Select your gender required field")
+  firstname: yup
+    .string()
+    .matches(/^([^0-9]*)$/, "First name shoul not contain number!")
+    .required("First name required field"),
+  lastname: yup
+    .string()
+    .matches(/^([^0-9]*)$/, "Last name shoul not contain number!")
+    .required("Last name required field"),
+  email: yup
+    .string()
+    .email("Email should have correct format")
+    .required("Email is a required field"),
+  emailConfirm: yup
+    .string()
+    .oneOf([yup.ref("email")], "Your emal do not match"),
+  password: yup
+    .string()
+    .matches(
+      /^.*(?=.{6,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1}).*$/,
+      "Password must contain at least 6 characters, one special case character"
+    )
+    .required("Please enter your password"),
+  birthday_day: yup
+    .number()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .required("Select your date of birth required"),
+  birthday_month: yup.string().required("Select your date of month required"),
+  birthday_year: yup
+    .number()
+    .transform((value) => (isNaN(value) ? undefined : value))
+    .required("Select your date of year required"),
+  gender: yup.string().required("Select your gender required field"),
 });
+
 const SignUp = (props) => {
-  const {SignUpList, add} = props; 
-   const [signUpstate, setsignUpstate] = useState({})
-    const history = useHistory();
-    const { register, errors, handleSubmit, watch } = useForm({
-        mode: 'onBlur',
-        resolver: yupResolver(SignUpSchema),
-       }); 
-    const email = watch('email');
-    const click = () =>{
-      history.push('/Results'); 
-    }
-    const onSubmit = () => { 
-    };
-    return (
-        <div className="sign_up_nav">
-              <div className="sign_up">
-                <div>
-                  <span className="head">Sign Up</span><br/>
-                  <p className="subhead">It's quick and easy.</p>
+  const { SignUpList, add } = props;
+  const [signUpstate, setsignUpstate] = useState({});
+  const history = useHistory();
+  const { register, errors, handleSubmit, watch } = useForm({
+    mode: "onBlur",
+    resolver: yupResolver(SignUpSchema),
+  });
+  const email = watch("email");
+  const click = () => {
+    history.push("/Results");
+  };
+  const onSubmit = () => {};
+
+  return (
+    <div className="sign_up_nav">
+      <div className="sign_up">
+        <div>
+          <span className="head">Sign Up</span>
+          <br />
+          <p className="subhead">It's quick and easy.</p>
+        </div>
+        <div className="frm">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="div1">
+              <div className="input_div1">
+                <input
+                  className="input1"
+                  style={{
+                    border: !!errors.firstname
+                      ? "1px solid red"
+                      : errors?.firstname?.message,
+                  }}
+                  type="text"
+                  name="firstname"
+                  ref={register}
+                  onChange={(event) => {
+                    setsignUpstate({
+                      ...signUpstate,
+                      ...{ firstname: event.target.value },
+                    });
+                  }}
+                  placeholder="Your name"
+                />
+                <div className="div1_err">
+                  {!!errors.firstname}
+                  {errors?.firstname?.message}
                 </div>
-                <div className="frm">
-                  <form onSubmit={handleSubmit(onSubmit)} >
-                          <div className="div1">
-                            <div className="input_div1">
-                            <input className="input1"
-                                style={{border: !!errors.firstname ? '1px solid red': errors?.firstname?.message}}
-                                type="text"
-                                name="firstname"
-                                ref={register}
-                                onChange={(event) => {
-                                    setsignUpstate({
-                                      ...signUpstate,
-                                      ...{ firstname: event.target.value },
-                                    });
-                                  }}
-                                placeholder="Your name"
-                            />
-                            <div className="div1_err">{!!errors.firstname}{errors?.firstname?.message}</div>
-                          </div>
-                          <div className="input_div2">
-                          <input className="input1"
-                                style={{border: !!errors.lastname ? '1px solid red': errors?.lastname?.message}}
-                                type="text"
-                                placeholder="Your surname"
-                                name="lastname"
-                                ref={register}
-                                onChange={(event) => {
-                                    setsignUpstate({
-                                      ...signUpstate,
-                                      ...{ lastname: event.target.value },
-                                    });
-                                  }}
-                            />
-                          <div className="div1_err">{!!errors.lastname}{errors?.lastname?.message}</div>
-                          </div>
-                          </div>
-                          <input className="signUpInput"
-                                style={{border: !!errors.email ? '1px solid red': errors?.email?.message}}
-                                type="email"
-                                name="email"
-                                placeholder="Your e-mail"
-                                ref={register}
-                                onChange={(event) => {
-                                    setsignUpstate({
-                                      ...signUpstate,
-                                      ...{ email: event.target.value },
-                                    });
-                                  }}
-                            />
-                            <br />
-                            <span className="err">{!!errors.email}{errors?.email?.message}</span>
-                            {email && (
-                              <input className="signUpInput"
-                              style={{border: !!errors.emailConfirm ? '1px solid red': errors?.emailConfirm?.message}}
-                              type="email"
-                              name="emailConfirm"
-                              placeholder="Re-enter e-mail"
-                              ref={register}
-                              onChange={(event) => {
-                                  setsignUpstate({
-                                    ...signUpstate,
-                                    ...{ emailConfirm: event.target.value },
-                                  });
-                                }}
-                          />
-                            )}
-                          <span className="err">{!!errors.emailConfirm}{errors?.emailConfirm?.message}</span>
-                            <input className="signUpInput"
-                                style={{border: !!errors.password ? '1px solid red': errors?.password?.message}}
-                                type="password"
-                                name="password"
-                                placeholder="New password"
-                                ref={register}
-                                onChange={(event) => {
-                                    setsignUpstate({
-                                      ...signUpstate,
-                                      ...{ password: event.target.value },
-                                    });
-                                  }}
-                            />
-                            <br />
-                            <span className="err">{!!errors.password}{errors?.password?.message}</span>
-                            <span>
-                                <select aria-label="Day" ref={register} name="birthday_day" title="Day" className="select_"
-                                style={{border: !!errors.birthday_day ? '1px solid red': errors?.birthday_day?.message}}
-                                onChange={(event) => {
-                                    setsignUpstate({
-                                      ...signUpstate,
-                                      ...{ birthday_day: event.target.value },
-                                    });
-                                  }}>
-                                    <option value="">Day</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
-                                </select>
-                                <select aria-label="Month" ref={register} name="birthday_month" id="Month" title="Month" className="select_"
-                                style={{border: !!errors.birthday_month ? '1px solid red': errors?.birthday_month?.message}}
-                                onChange={(event) => {
-                                    setsignUpstate({
-                                      ...signUpstate,
-                                      ...{ birthday_month: event.target.value },
-                                    });
-                                  }}>
-                                    <option value="">Month</option><option value="January">January</option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="Agust">Agust</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option>
-                                </select>
-                                <select aria-label="Year" ref={register} name="birthday_year" title="Year" className="select_"
-                                style={{border: !!errors.birthday_year ? '1px solid red': errors?.birthday_year?.message}}
-                                onChange={(event) => {
-                                    setsignUpstate({
-                                      ...signUpstate,
-                                      ...{ birthday_year: event.target.value },
-                                    });
-                                  }}>
-                                    <option value="">Year</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option><option value="1924">1924</option><option value="1923">1923</option><option value="1922">1922</option><option value="1921">1921</option><option value="1920">1920</option><option value="1919">1919</option><option value="1918">1918</option><option value="1917">1917</option><option value="1916">1916</option><option value="1915">1915</option><option value="1914">1914</option><option value="1913">1913</option><option value="1912">1912</option><option value="1911">1911</option><option value="1910">1910</option>
-                                </select>
-                            </span>
-                            <div className="err">{!!errors.birthday_day}{errors?.birthday_day?.message}</div>
-                            <div className="err">{!!errors.birthday_month}{errors?.birthday_month?.message}</div>
-                            <div className="err">{!!errors.birthday_year}{errors?.birthday_year?.message}</div>
-                            <span className="radio_span"style={{border: !!errors.gender ? '1px solid red': errors?.gender?.message}}>
-                                <label className="lbl">Famale</label>
-                                <input type="radio" className="input_" name="gender" value="Famele" ref={register}
-                                onChange={(event) => {
-                                    setsignUpstate({
-                                      ...signUpstate,
-                                      ...{ gender: event.target.value },
-                                    });
-                                  }}
-                                />
-                            </span>
-                            <span className="radio_span"style={{border: !!errors.gender ? '1px solid red': errors?.gender?.message}}>
-                              
-                            <label className="lbl">Male</label>
-                                <input className="input_" type="radio" name="gender" value="Male" ref={register} 
-                                onChange={(event) => {
-                                  setsignUpstate({
-                                    ...signUpstate,
-                                    ...{ gender: event.target.value },
-                                  });
-                                }}
-                                />
-                            </span>
-                            <span className="radio_span"style={{border: !!errors.gender ? '1px solid red': errors?.gender?.message}}>
-                                <label className="lbl">Custom</label>
-                                <input type="radio" className="input_" name="gender" value="Custom" ref={register}
-                                onChange={(event) => {
-                                    setsignUpstate({
-                                      ...signUpstate,
-                                      ...{ gender: event.target.value },
-                                    });
-                                  }}
-                                />
-                            </span>
-                            <br />
-                            <span className="err">{!!errors.gender}{errors?.gender?.message}</span>
-                            <button className="register-btn" type="submit">Sign Up</button><br/>
-                      <button className="record-btn"  onClick={(event) => {
-                        click()
-                        event.preventDefault();
-                        add(signUpstate);
-                      }}>Show Record</button>
-                    </form>
               </div>
-            <Link to='/SignIn' className="cancel">Cancel</Link>
+              <div className="input_div2">
+                <input
+                  className="input1"
+                  style={{
+                    border: !!errors.lastname
+                      ? "1px solid red"
+                      : errors?.lastname?.message,
+                  }}
+                  type="text"
+                  placeholder="Your surname"
+                  name="lastname"
+                  ref={register}
+                  onChange={(event) => {
+                    setsignUpstate({
+                      ...signUpstate,
+                      ...{ lastname: event.target.value },
+                    });
+                  }}
+                />
+                <div className="div1_err">
+                  {!!errors.lastname}
+                  {errors?.lastname?.message}
+                </div>
+              </div>
+            </div>
+            <input
+              className="signUpInput"
+              style={{
+                border: !!errors.email
+                  ? "1px solid red"
+                  : errors?.email?.message,
+              }}
+              type="email"
+              name="email"
+              placeholder="Your e-mail"
+              ref={register}
+              onChange={(event) => {
+                setsignUpstate({
+                  ...signUpstate,
+                  ...{ email: event.target.value },
+                });
+              }}
+            />
+            <br />
+            <span className="err">
+              {!!errors.email}
+              {errors?.email?.message}
+            </span>
+            {email && (
+              <input
+                className="signUpInput"
+                style={{
+                  border: !!errors.emailConfirm
+                    ? "1px solid red"
+                    : errors?.emailConfirm?.message,
+                }}
+                type="email"
+                name="emailConfirm"
+                placeholder="Re-enter e-mail"
+                ref={register}
+                onChange={(event) => {
+                  setsignUpstate({
+                    ...signUpstate,
+                    ...{ emailConfirm: event.target.value },
+                  });
+                }}
+              />
+            )}
+            <span className="err">
+              {!!errors.emailConfirm}
+              {errors?.emailConfirm?.message}
+            </span>
+            <input
+              className="signUpInput"
+              style={{
+                border: !!errors.password
+                  ? "1px solid red"
+                  : errors?.password?.message,
+              }}
+              type="password"
+              name="password"
+              placeholder="New password"
+              ref={register}
+              onChange={(event) => {
+                setsignUpstate({
+                  ...signUpstate,
+                  ...{ password: event.target.value },
+                });
+              }}
+            />
+            <br />
+            <span className="err">
+              {!!errors.password}
+              {errors?.password?.message}
+            </span>
+            <span>
+              <select
+                aria-label="Day"
+                ref={register}
+                name="birthday_day"
+                title="Day"
+                className="select_"
+                style={{
+                  border: !!errors.birthday_day
+                    ? "1px solid red"
+                    : errors?.birthday_day?.message,
+                }}
+                onChange={(event) => {
+                  setsignUpstate({
+                    ...signUpstate,
+                    ...{ birthday_day: event.target.value },
+                  });
+                }}
+              ><option value="">Day</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+              </select>
+              <select
+                aria-label="Month"
+                ref={register}
+                name="birthday_month"
+                id="Month"
+                title="Month"
+                className="select_"
+                style={{
+                  border: !!errors.birthday_month
+                    ? "1px solid red"
+                    : errors?.birthday_month?.message,
+                }}
+                onChange={(event) => {
+                  setsignUpstate({
+                    ...signUpstate,
+                    ...{ birthday_month: event.target.value },
+                  });
+                }}
+              >
+                <option value="">Month</option><option value="January">January</option><option value="February">February</option><option value="March">March</option><option value="April">April</option><option value="May">May</option><option value="June">June</option><option value="July">July</option><option value="Agust">Agust</option><option value="September">September</option><option value="October">October</option><option value="November">November</option><option value="December">December</option>
+              </select>
+              <select
+                aria-label="Year"
+                ref={register}
+                name="birthday_year"
+                title="Year"
+                className="select_"
+                style={{
+                  border: !!errors.birthday_year
+                    ? "1px solid red"
+                    : errors?.birthday_year?.message,
+                }}
+                onChange={(event) => {
+                  setsignUpstate({
+                    ...signUpstate,
+                    ...{ birthday_year: event.target.value },
+                  });
+                }}
+              ><option value="">Year</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option><option value="1924">1924</option><option value="1923">1923</option><option value="1922">1922</option><option value="1921">1921</option><option value="1920">1920</option><option value="1919">1919</option><option value="1918">1918</option><option value="1917">1917</option><option value="1916">1916</option><option value="1915">1915</option><option value="1914">1914</option><option value="1913">1913</option><option value="1912">1912</option><option value="1911">1911</option><option value="1910">1910</option>
+              </select>
+            </span>
+            <div className="err">
+              {!!errors.birthday_day}
+              {errors?.birthday_day?.message}
+            </div>
+            <div className="err">
+              {!!errors.birthday_month}
+              {errors?.birthday_month?.message}
+            </div>
+            <div className="err">
+              {!!errors.birthday_year}
+              {errors?.birthday_year?.message}
+            </div>
+            <span
+              className="radio_span"
+              style={{
+                border: !!errors.gender
+                  ? "1px solid red"
+                  : errors?.gender?.message,
+              }}
+            >
+              <label className="lbl">Famale</label>
+              <input
+                type="radio"
+                className="input_"
+                name="gender"
+                value="Famele"
+                ref={register}
+                onChange={(event) => {
+                  setsignUpstate({
+                    ...signUpstate,
+                    ...{ gender: event.target.value },
+                  });
+                }}
+              />
+            </span>
+            <span
+              className="radio_span"
+              style={{
+                border: !!errors.gender
+                  ? "1px solid red"
+                  : errors?.gender?.message,
+              }}
+            >
+              <label className="lbl">Male</label>
+              <input
+                className="input_"
+                type="radio"
+                name="gender"
+                value="Male"
+                ref={register}
+                onChange={(event) => {
+                  setsignUpstate({
+                    ...signUpstate,
+                    ...{ gender: event.target.value },
+                  });
+                }}
+              />
+            </span>
+            <span
+              className="radio_span"
+              style={{
+                border: !!errors.gender
+                  ? "1px solid red"
+                  : errors?.gender?.message,
+              }}
+            >
+              <label className="lbl">Custom</label>
+              <input
+                type="radio"
+                className="input_"
+                name="gender"
+                value="Custom"
+                ref={register}
+                onChange={(event) => {
+                  setsignUpstate({
+                    ...signUpstate,
+                    ...{ gender: event.target.value },
+                  });
+                }}
+              />
+            </span>
+            <br />
+            <span className="err">
+              {!!errors.gender}
+              {errors?.gender?.message}
+            </span>
+            <button className="register-btn" type="submit">
+              Sign Up
+            </button>
+            <br />
+            <button
+              className="record-btn"
+              onClick={(event) => {
+                click();
+                event.preventDefault();
+                add(signUpstate);
+              }}
+            >
+              Show Record
+            </button>
+          </form>
         </div>
-        </div>
-    );
+        <Link to="/SignIn" className="cancel">
+          Cancel
+        </Link>
+      </div>
+    </div>
+  );
 };
+
 const mapStateToProps = (state) => {
   return {
     SignUpList: state.signup,
@@ -240,8 +364,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     add: (res) => {
-       dispatch(addSignUpAction(res));
-    }
+      dispatch(addSignUpAction(res));
+    },
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps) (SignUp);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
