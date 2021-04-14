@@ -43,6 +43,8 @@ const SignUp = (props) => {
 	const { SignUpList, add } = props;
 	const [signUpstate, setsignUpstate] = useState({});
 	const history = useHistory();
+	const [shovBtn, setShovBtn] = useState(false);
+	const shov = () => setShovBtn(true);
 	const { register, errors, handleSubmit, watch } = useForm({
 		mode: "onBlur",
 		resolver: yupResolver(SignUpSchema),
@@ -52,7 +54,9 @@ const SignUp = (props) => {
 		history.push("/Results");
 	};
 
-	const onSubmit = () => {};
+	const onSubmit = () => {
+		shov();
+	};
 	const yearArr = [];
 	const dayArr = [];
 	const monthArr = [
@@ -76,7 +80,6 @@ const SignUp = (props) => {
 		yearArr.push(i);
 	}
 	const reversArr = yearArr.reverse();
-
 	return (
 		<div className="sign_up_nav">
 			<div className="sign_up">
@@ -355,18 +358,19 @@ const SignUp = (props) => {
 						</span>
 						<button className="register-btn" type="submit">
 							Sign Up
-						</button>
-						<br />
-						<button
-							className="record-btn"
-							onClick={(event) => {
-								click();
-								event.preventDefault();
-								add(signUpstate);
-							}}
-						>
-							Show Record
-						</button>
+						</button><br/>{
+						shovBtn ?<button
+						className="record-btn"
+						onClick={(event) => {
+							click();
+							event.preventDefault();
+							add(signUpstate);
+						}}
+					>
+						Show Record
+					</button> : null
+						}
+						
 					</form>
 				</div>
 				<Link to="/SignIn" className="cancel">

@@ -369,15 +369,14 @@ h1 {
 	text-align: justify;
 	line-height: 40px;
 }
-
 .record-btn {
 	text-decoration-line: none;
 	transition: 0.5s;
 	background-image: linear-gradient(
 		to right,
-		#c9bb3a 0%,
-		#c1c431 51%,
-		#0ae942 100%
+		rgb(61, 217, 245) 0%,
+		rgb(240, 53, 218) 51%,
+		rgb(109, 53, 240) 100%
 	);
 	background-size: 200% auto;
 	color: white;

@@ -17,22 +17,15 @@ const SignIn = () => {
 		resolver: yupResolver(signInSchema),
 	});
 	const [errorEmail, setErrorEmail] = useState("");
-	const [errorPassword, setErrorPassword] = useState("");
-
 	const onSubmit = (data) => {
 		return Login_(data);
 	};
+	
 	function Login_(data) {
-		if (data.email === admin.email) {
-			if (data.password === admin.password) {
-				history.push("./admin");
-			} else {
-				setErrorPassword(
-					"Password you entered is incorrect. Did you forget your password ?"
-				);
-			}
+		if (data.email !== admin.email && data.password !== admin.password) {
+			setErrorEmail("E-mail or password entered does not match, try again.");
 		} else {
-			setErrorEmail("Email you entered does not match any account.");
+			history.push("/Admin");
 		}
 	}
 	const history = useHistory();
@@ -56,28 +49,25 @@ const SignIn = () => {
 					<div className="sign">
 						<form onSubmit={handleSubmit(onSubmit)}>
 							<div className="form-body">
-								<input
-									className="signIn"
-									style={{ border: errorEmail !== "" ? "1px solid red" : "" }}
-									placeholder="Mobile number or email address"
-									type="email"
-									name="email"
-									ref={register}
-								/>
 								{errorEmail !== "" ? <span className="err">{errorEmail}</span> : ""}
 							</div>
+							<input
+								className="signIn"
+								style={{ border: errorEmail !== "" ? "1px solid red" : "" }}
+								placeholder="Mobile number or email address"
+								type="email"
+								name="email"
+								ref={register}
+							/>
 							<div className="form-body">
 								<input
 									className="signIn"
-									style={{
-										border: errorPassword !== "" ? "1px solid red" : "",
-									}}
+									style={{ border: errorEmail !== "" ? "1px solid red" : "" }}
 									placeholder="Password"
 									type="password"
 									name="password"
 									ref={register}
 								/>
-								{errorPassword !== "" ? <span className="err">{errorPassword}</span> : ""}
 							</div>
 							<div className="div_btn">
 								<button className="btn" type="submit">
