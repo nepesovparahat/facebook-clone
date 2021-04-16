@@ -1,8 +1,8 @@
 const signupactiontype = {
-	ADD: "ADD",
+  ADD: "ADD",
 };
 const addSignUpAction = (res) => {
-	return { type: signupactiontype.ADD, payload: res };
+  return { type: signupactiontype.ADD, payload: res };
 };
 
 export { signupactiontype, addSignUpAction };
