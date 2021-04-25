@@ -123,11 +123,19 @@ body {
 }
 
 .line {
-  width: 330px;
+  border-bottom: 1px solid #daded1;
+  margin: 20px 16px;
+  text-align: center;
 }
 
 .psw {
-  font-size: 16px;
+  font-size: 14px;
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration:underline;
 }
 
 .signIn {

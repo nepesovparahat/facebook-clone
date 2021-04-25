@@ -79,9 +79,9 @@ const SignIn = () => {
                 </button>
               </div>
               <span className="psw">
-                <a href="#">Forgot password ?</a>
+                <a href="#">Forgotten password ?</a>
               </span>
-              <hr className="line" />
+              <div className="line"></div>
               <Link to="/SignUp">
                 <button className="sign_up_btn">Create New Account</button>
               </Link>
