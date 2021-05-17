@@ -1,4 +1,4 @@
-## Facebook Front-end Clone
+## Facebook - Log In or Sign Up Clone
 
 This project was implemented almost similar to Facebook's current latest version (314.0.0.43.119) interface design. The aim of this project was mainly to show error messages on registration and login pages and simulate the actual Facebook interface in terms of design.
 
