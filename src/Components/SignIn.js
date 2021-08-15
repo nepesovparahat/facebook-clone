@@ -22,7 +22,7 @@ const SignIn = () => {
   };
 
   function Login_(data) {
-    if (data.email !== admin.email && data.password !== admin.password) {
+    if (data.email !== admin.email || data.password !== admin.password) {
       setErrorEmail("E-mail or password entered does not match, try again.");
     } else {
       history.push("/Admin");
